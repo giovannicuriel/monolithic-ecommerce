@@ -9,8 +9,10 @@ data class Product (
         val id: String? = null,
         val sku: String,
         val name: String,
-        val quantity: Long,
+        var quantity: Long,
         val price: Double
 ){
     fun getTotalPrice(quantity: Long = this.quantity) : Double = this.price * quantity
+    fun quantityIsAvailable(quantity: Long): Boolean = this.quantity >= quantity
+
 }

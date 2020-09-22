@@ -14,10 +14,13 @@ data class User(
         val id: String? = null,
         val name: String,
         val email: String,
-        val password: String,
+        @JsonIgnore
+        var password: String,
         @Embedded
         val address: Address
 ){
 
-        fun passwordEncrypt(): String = PasswordUtils.encrypt(this.password)
+        fun passwordEncrypt() {
+                this.password = PasswordUtils.encrypt(this.password)
+        }
 }

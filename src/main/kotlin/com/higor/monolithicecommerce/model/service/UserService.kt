@@ -23,6 +23,7 @@ class UserService(@Autowired val repository: UserRepository) {
         }
 
         val user = userDTO.toEntity()
+        user.passwordEncrypt()
         return repository.save(user)
     }
 

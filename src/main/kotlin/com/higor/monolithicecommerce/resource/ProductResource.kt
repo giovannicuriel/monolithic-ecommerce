@@ -40,7 +40,7 @@ class ProductResource(@Autowired val service: ProductService) {
 
     @DeleteMapping("/products")
     fun deleteBySku(@RequestParam sku: String): ResponseEntity<Product> {
-       service.deleteBySku(sku)
+        service.deleteBySku(sku)
         return ResponseEntity.noContent().build()
     }
 }
