@@ -16,6 +16,6 @@ class OrderResource(@Autowired val service: OrderService) {
 
     @PostMapping("/order/create")
     fun createOrder(@RequestBody orderDTO: OrderDTO): ResponseEntity<Order>{
-        return ResponseEntity.ok(this.service.createOrder(orderDTO.userEmail))
+        return ResponseEntity.ok(this.service.publishOrder(orderDTO.userEmail))
     }
 }

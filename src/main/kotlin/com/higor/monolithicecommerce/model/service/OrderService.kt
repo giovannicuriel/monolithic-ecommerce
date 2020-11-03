@@ -1,7 +1,7 @@
 package com.higor.monolithicecommerce.model.service
 
+import com.higor.monolithicecommerce.config.QueueManager
 import com.higor.monolithicecommerce.model.entity.Order
-import com.higor.monolithicecommerce.model.repository.OrderRepository
 import com.higor.monolithicecommerce.model.service.exception.ProductQuantityNotAllowed
 import com.higor.monolithicecommerce.model.service.exception.ResourceNotFound
 import com.higor.monolithicecommerce.model.service.exception.UnableToCreateOrder
@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class OrderService(@Autowired val repository: OrderRepository,
-                   @Autowired val cartService: CartService) {
+class OrderService(@Autowired val cartService: CartService) {
 
-    fun createOrder(userEmail: String): Order {
+    fun publishOrder(userEmail: String): Order {
         val user = this.cartService.userService.getUserByEmail(userEmail) ?: throw ResourceNotFound("User doesn't exists")
         val cart = this.cartService.getUserCart(user.email)
         if (cart.products.isEmpty()){
@@ -29,7 +28,8 @@ class OrderService(@Autowired val repository: OrderRepository,
                 this.cartService.productService.repository.save(it)
             }
         }
-        val order = Order(null, user, cart.products, cart.totalPrice)
-        return this.repository.save(order)
+        val order = Order(user, cart.products, cart.totalPrice)
+        QueueManager.publish(order.toJson()!!, "createOrder")
+        return order
     }
 }
