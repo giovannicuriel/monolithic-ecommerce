@@ -4,6 +4,7 @@ import com.higor.monolithicecommerce.model.DTO.StandardError
 import com.higor.monolithicecommerce.model.service.exception.ProductQuantityNotAllowed
 import com.higor.monolithicecommerce.model.service.exception.ResourceAlreadyExists
 import com.higor.monolithicecommerce.model.service.exception.ResourceNotFound
+import com.higor.monolithicecommerce.model.service.exception.ThirdPartyApiException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -40,6 +41,15 @@ class ResourceExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(
                 StandardError(this.messageList, request.requestURI, Instant.now())
+        )
+    }
+
+    @ExceptionHandler(ThirdPartyApiException::class)
+    fun apiError(ex: ThirdPartyApiException, request: HttpServletRequest): ResponseEntity<StandardError> {
+        this.messageList.add(ex.message!!)
+
+        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(
+            StandardError(this.messageList, request.requestURI, Instant.now())
         )
     }
 }

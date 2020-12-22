@@ -17,7 +17,8 @@ class CartService(@Autowired val repository: CartRepository,
 
     fun getUserCart(userEmail: String): Cart {
         val user = this.userService.getUserByEmail(userEmail) ?: throw ResourceNotFound("User doesn't exists")
-        return repository.getByCustomer(user) ?: throw ResourceNotFound("Cart not found for this user")
+        val cart = repository.getByCustomer(user)
+        return cart ?: throw ResourceNotFound("Cart not found for this user")
     }
 
 
@@ -34,6 +35,7 @@ class CartService(@Autowired val repository: CartRepository,
         }catch(ex: ResourceNotFound){
             Cart(customer = user)
         }
+        cart.voucher = cartDTO.voucher
         val productToAdd: Product = productInDb.copy(
                 id = null,
                 sku = productInDb.sku,

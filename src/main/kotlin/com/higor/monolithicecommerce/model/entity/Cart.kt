@@ -7,12 +7,13 @@ import javax.persistence.Id
 
 @Document
 data class Cart (
-        @Id
+    @Id
         @JsonIgnore
         val id: String? = null,
-        val customer: User,
-        val products: HashSet<Product> = HashSet<Product>(),
-        @JsonProperty("total_price")
+    val customer: User,
+    val products: HashSet<Product> = HashSet<Product>(),
+    var voucher: String? = null,
+    @JsonProperty("total_price")
         var totalPrice: Double = 0.0
 ){
 

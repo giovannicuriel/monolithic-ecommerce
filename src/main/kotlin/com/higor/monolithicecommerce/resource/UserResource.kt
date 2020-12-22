@@ -39,7 +39,7 @@ class UserResource(@Autowired val service: UserService){
 
     @DeleteMapping("/users")
     fun deleteByEmail(@RequestParam email: String): ResponseEntity<User> {
-        val user = service.deleteByEmail(email)
+        service.deleteByEmail(email)
 
         return ResponseEntity.noContent().build()
     }

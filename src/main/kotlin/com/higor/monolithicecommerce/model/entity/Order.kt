@@ -15,4 +15,12 @@ data class Order (
                 val mapper = jacksonObjectMapper()
                 return mapper.writeValueAsString(this)
         }
+
+        companion object {
+                fun build(user: User, products: HashSet<Product>, totalPrice: Double) = Order(
+                        user,
+                        products,
+                        totalPrice
+                )
+        }
 }
