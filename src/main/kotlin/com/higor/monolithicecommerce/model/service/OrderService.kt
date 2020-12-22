@@ -59,13 +59,12 @@ class OrderService(@Autowired val cartService: CartService, @Autowired val vouch
     }
 
     private fun redeemVoucher(){
+        TODO()
+    }
+    private fun givePercentDiscount(cart: Cart, discountVoucher: ValidVoucherDTO): Double =
+        cart.totalPrice - (cart.totalPrice * discountVoucher.discount!!.percentOff!!) / 100
 
-    }
-    private fun givePercentDiscount(cart: Cart, discountVoucher: ValidVoucherDTO): Double {
-        return cart.totalPrice - (cart.totalPrice * discountVoucher.discount!!.percentOff!!) / 100
-    }
+    private fun giveAmountDiscount(cart: Cart, discountVoucher: ValidVoucherDTO): Double =
+        cart.totalPrice - discountVoucher.discount!!.amountOff!!
 
-    private fun giveAmountDiscount(cart: Cart, discountVoucher: ValidVoucherDTO): Double {
-        return cart.totalPrice - discountVoucher.discount!!.amountOff!!
-    }
 }

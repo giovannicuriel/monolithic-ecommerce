@@ -16,10 +16,9 @@ import java.io.IOException
 class VoucherifyService(@Autowired val env: Environment) : VoucherifyCallable {
 
     private val apiBaseURL: String = env.getProperty("voucherify.baseUrl")!!
-
     private val appId: String = env.getProperty("voucherify.appId")!!
-
     private val appToken: String = env.getProperty("voucherify.appToken")!!
+
 
     private val restClient = NetworkUtils.getRetrofitInstance(this.apiBaseURL).create(VoucherifyEndpoint::class.java)
 
