@@ -1,7 +1,6 @@
 package com.higor.monolithicecommerce.model.service
 
 import com.higor.monolithicecommerce.model.DTO.CartDTO
-import com.higor.monolithicecommerce.model.DTO.ProductCartDTO
 import com.higor.monolithicecommerce.model.entity.Cart
 import com.higor.monolithicecommerce.model.entity.Product
 import com.higor.monolithicecommerce.model.repository.CartRepository

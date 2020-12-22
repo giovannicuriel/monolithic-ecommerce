@@ -11,7 +11,7 @@ data class Cart (
         @JsonIgnore
         val id: String? = null,
     val customer: User,
-    val products: HashSet<Product> = HashSet<Product>(),
+    val products: HashSet<Product> = HashSet(),
     var voucher: String? = null,
     @JsonProperty("total_price")
         var totalPrice: Double = 0.0
@@ -19,7 +19,7 @@ data class Cart (
 
     fun calculateTotalPrice() {
         if(this.products.size > 0){
-            this.products.forEach { it -> this.totalPrice = this.totalPrice.plus(it.price * it.quantity) }
+            this.products.forEach { this.totalPrice = it.getTotalPrice(it.quantity) }
         }else{
             this.totalPrice = 0.00
         }

@@ -1,9 +1,7 @@
 package com.higor.monolithicecommerce.resource
 
 import com.higor.monolithicecommerce.model.DTO.ProductDTO
-import com.higor.monolithicecommerce.model.DTO.UserDTO
 import com.higor.monolithicecommerce.model.entity.Product
-import com.higor.monolithicecommerce.model.entity.User
 import com.higor.monolithicecommerce.model.service.ProductService
 import com.higor.monolithicecommerce.model.service.exception.ResourceNotFound
 import org.springframework.beans.factory.annotation.Autowired

@@ -4,7 +4,6 @@ import com.higor.monolithicecommerce.model.service.exception.ThirdPartyApiExcept
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Chain
 import okhttp3.Response
-import org.springframework.http.HttpStatus
 
 class RequestInterceptor : Interceptor {
 

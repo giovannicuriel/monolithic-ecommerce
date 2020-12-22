@@ -7,7 +7,6 @@ import com.higor.monolithicecommerce.model.entity.Order
 import com.higor.monolithicecommerce.model.entity.Product
 import com.higor.monolithicecommerce.model.service.exception.ProductQuantityNotAllowed
 import com.higor.monolithicecommerce.model.service.exception.ResourceNotFound
-import com.higor.monolithicecommerce.model.service.exception.ThirdPartyApiException
 import com.higor.monolithicecommerce.model.service.exception.UnableToCreateOrder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

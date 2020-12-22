@@ -1,13 +1,13 @@
+@file:Suppress("unused")
+
 package com.higor.monolithicecommerce.resource
 
 import com.higor.monolithicecommerce.model.DTO.CartDTO
 import com.higor.monolithicecommerce.model.entity.Cart
-
 import com.higor.monolithicecommerce.model.service.CartService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.xml.ws.Response
 
 @RestController
 @RequestMapping("/api")

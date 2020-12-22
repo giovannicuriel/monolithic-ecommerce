@@ -5,7 +5,7 @@ import com.higor.monolithicecommerce.model.enum.StatusEnum
 
 data class Order (
         val customer: User,
-        val products: HashSet<Product> = HashSet<Product>(),
+        val products: HashSet<Product> = HashSet(),
         val totalPrice: Double,
         var status: StatusEnum = StatusEnum.WAITING_PAYMENT
 
